@@ -1,0 +1,22 @@
+@startuml new_customer
+left to right direction
+actor New_Customer
+rectangle "System" as system {
+  (Login)
+  (Register)
+  (View Cart)
+  (View Menu)
+  (View Popular Orders)
+  (Customize Order)
+  (View Profile)
+  (Logout)
+}
+New_Customer --> (Login)
+New_Customer --> (Register)
+New_Customer --> (View Cart)
+New_Customer --> (View Menu)
+New_Customer --> (View Popular Orders)
+New_Customer --> (Customize Order)
+New_Customer --> (View Profile)
+New_Customer --> (Logout)
+@enduml
