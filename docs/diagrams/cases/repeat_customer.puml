@@ -1,0 +1,22 @@
+@startuml repeat_customer
+left to right direction
+actor Repeat_customer
+rectangle "System" as system {
+  (Login)
+  (Register)
+  (View Cart)
+  (View Menu)
+  (Customize Order)
+  (View Previous Orders)
+  (View Profile)
+  (Logout)
+}
+Repeat_customer --> (Login)
+Repeat_customer --> (Register)
+Repeat_customer --> (View Cart)
+Repeat_customer --> (View Menu)
+Repeat_customer --> (Customize Order)
+Repeat_customer --> (View Previous Orders)
+Repeat_customer --> (View Profile)
+Repeat_customer --> (Logout)
+@enduml

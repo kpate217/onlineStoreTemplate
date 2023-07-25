@@ -1,0 +1,20 @@
+@startuml chef
+left to right direction
+actor Chef
+rectangle "System" as system {
+  (Login)
+  (View Latest Orders)
+  (View Order Details)
+  (View Schedule)
+  (Hours Settings)
+  (View Employee Profile)
+  (Logout)
+}
+Chef --> (Login)
+Chef --> (View Latest Orders)
+Chef --> (View Order Details)
+Chef --> (View Schedule)
+Chef --> (Hours Settings)
+Chef --> (View Employee Profile)
+Chef --> (Logout)
+@enduml

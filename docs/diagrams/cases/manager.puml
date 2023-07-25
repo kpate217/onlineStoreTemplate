@@ -1,0 +1,20 @@
+@startuml manager
+left to right direction
+actor Manager
+rectangle "System" as system {
+  (Login)
+  (View Inventory)
+  (View Business Statistics)
+  (View Schedule)
+  (View Employees)
+  (View Profile)
+  (Logout)
+}
+Manager --> (Login)
+Manager --> (View Inventory)
+Manager --> (View Business Statistics)
+Manager --> (View Schedule)
+Manager --> (View Employees)
+Manager --> (View Profile)
+Manager --> (Logout)
+@enduml
