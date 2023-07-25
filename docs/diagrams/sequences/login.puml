@@ -1,8 +1,10 @@
 @startuml login
 actor Customer
 boundary "System" as system
-control "Sessions" as sessions
+entity "Sessions" as sessions
 control "Authentication" as auth
+database "Menu" as menu
+collections "Order List" as orderlist
 Customer -> system: Login
 activate system
 system -> auth: login_pipeline(username, password)
@@ -11,7 +13,15 @@ auth --> system: True
 deactivate auth
 system -> sessions: add_new_session(username, db)
 activate sessions
+sessions -> menu: select_items()
+sessions -> menu: customize_items()
+activate menu
+menu --> sessions: Checkout
+deactivate menu
+sessions -> orderlist: place_order(username, items)
+activate orderlist
 sessions --> system: None
+deactivate orderlist
 deactivate sessions
 system -> system: redirect to home page
 deactivate system

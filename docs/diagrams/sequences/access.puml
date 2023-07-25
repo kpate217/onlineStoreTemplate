@@ -1,0 +1,21 @@
+@startuml login
+actor Manager
+boundary "System" as system
+control "Options" as options
+control "Authentication" as auth
+Manager -> system: Login
+activate system
+system -> auth: login_pipeline(username, password)
+activate auth
+auth --> system: True
+deactivate auth
+system -> options: view_inventory()
+system -> options: view_business_statistics()
+system -> options: view_schedule()
+system -> options: view_employees()
+activate options
+options --> system: None
+deactivate options
+system -> system: redirect to home page
+deactivate system
+@enduml

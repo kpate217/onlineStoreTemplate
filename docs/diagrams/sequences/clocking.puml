@@ -1,0 +1,20 @@
+@startuml login
+actor Employee
+boundary "System" as system
+control "Clock" as clock
+control "Authentication" as auth
+Employee -> system: Login
+activate system
+system -> auth: login_pipeline(username, password)
+activate auth
+auth --> system: True
+deactivate auth
+system -> clock: add_clockin(username, time)
+activate clock
+clock --> system: None
+system -> clock: end_clockin(username, time)
+clock --> system: None
+deactivate clock
+system -> system: redirect to home page
+deactivate system
+@enduml
