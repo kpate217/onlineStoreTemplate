@@ -1,0 +1,12 @@
+@startuml clock_in_out
+
+!define CLOCK_IN_COLOR #99CC99
+!define CLOCK_OUT_COLOR #FFA500
+
+!define EMPLOYEE(employee_id, name, clock_in, clock_out) class employee as "Employee ID: employee_id\nName: name\nClock In: clock_in\nClock Out: clock_out" << (F,CLOCK_IN_COLOR) >>, << (F,CLOCK_OUT_COLOR) >>
+
+EMPLOYEE(001, John Doe, 09:00 AM, 05:00 PM)
+EMPLOYEE(002, Jane Smith, 08:30 AM, 04:30 PM)
+EMPLOYEE(003, Mike Johnson, 09:15 AM, 05:15 PM)
+
+@enduml

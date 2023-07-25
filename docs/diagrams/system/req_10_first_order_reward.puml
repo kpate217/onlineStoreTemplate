@@ -1,0 +1,14 @@
+@startuml first_order_reward
+
+!define ITEM_COLOR #99CC99
+!define REWARD_COLOR #FFCC66
+
+!define ITEM(item, label, description, price) class item as "Item: label\n\nDescription: description\nPrice: $price" << (F,ITEM_COLOR) >>
+!define REWARD(item) class item as "First Order Reward: ★" << (F,REWARD_COLOR) >>
+
+ITEM(pasta, Pasta, "Delicious pasta dish served with your choice of sauce.", 10.99)
+ITEM(pizza, Pizza, "Freshly baked pizza with a variety of toppings to choose from.", 12.99)
+REWARD(pizza)
+ITEM(burger, Burger, "Juicy beef burger with all your favorite toppings.", 9.99)
+
+@enduml

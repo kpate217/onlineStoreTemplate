@@ -1,0 +1,19 @@
+@startuml menu_item_info
+
+!define ITEM_COLOR #99CC99
+
+!define ITEM(item, label, description, price) class item as "Item: label\n\nDescription: description\nPrice: $price" << (F,ITEM_COLOR) >>
+
+ITEM(cheese_sticks, Cheese Sticks, "Mozzarella cheese sticks served with marinara sauce.", 8.99)
+ITEM(bruschetta, Bruschetta, "Toasted Italian bread topped with fresh tomatoes, basil, garlic, and olive oil.", 7.49)
+ITEM(garlic_bread, Garlic Bread, "Toasted bread with garlic butter and herbs.", 4.99)
+
+ITEM(grilled_chicken, Grilled Chicken, "Grilled chicken breast served with a side of mixed vegetables.", 12.99)
+ITEM(pasta_alfredo, Pasta Alfredo, "Fettuccine pasta served with creamy Alfredo sauce.", 10.99)
+ITEM(beef_steak, Beef Steak, "Juicy and tender beef steak cooked to perfection.", 16.99)
+
+ITEM(chocolate_cake, Chocolate Cake, "Rich and moist chocolate cake topped with chocolate frosting.", 6.99)
+ITEM(ice_cream_sundae, Ice Cream Sundae, "Vanilla ice cream topped with chocolate syrup, whipped cream, and a cherry.", 5.49)
+ITEM(fruit_tart, Fruit Tart, "Butter crust tart filled with fresh seasonal fruits.", 4.99)
+
+@enduml

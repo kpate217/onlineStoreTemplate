@@ -1,0 +1,13 @@
+@startuml req_2_dietary_filtering
+
+!define FILTER_COLOR #FFA500
+
+!define DIETARY_RESTRICTION_ITEM(item, label) class item as "Dietary Restriction: label" << (F,FILTER_COLOR) >>
+
+DIETARY_RESTRICTION_ITEM(Vegetarian, Vegetarian)
+DIETARY_RESTRICTION_ITEM(Vegan, Vegan)
+DIETARY_RESTRICTION_ITEM(GlutenFree, Gluten-Free)
+DIETARY_RESTRICTION_ITEM(LactoseFree, Lactose-Free)
+DIETARY_RESTRICTION_ITEM(NutFree, Nut-Free)
+
+@enduml

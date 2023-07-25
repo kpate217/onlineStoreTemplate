@@ -1,0 +1,5 @@
+@startuml
+class LanguageSupport {
+    +changeLanguage(language: str) : bool
+}
+@enduml

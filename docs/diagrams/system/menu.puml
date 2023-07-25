@@ -1,0 +1,32 @@
+@startuml menu
+
+!define CATEGORY_COLOR #993333
+!define FILTER_COLOR #FFA500
+
+!define CATEGORY_ITEM(item, label) class item as "Category: label" << (F,CATEGORY_COLOR) >>
+!define DIETARY_RESTRICTION_ITEM(item, label) class item as "Dietary Restriction: label" << (F,FILTER_COLOR) >>
+
+!define ITEM(item, label, category) class item as "Category: category\nlabel" << (F,CATEGORY_COLOR) >>
+
+CATEGORY_ITEM(Appetizers, Appetizers)
+ITEM(cheese_sticks, Cheese Sticks, Appetizers)
+ITEM(bruschetta, Bruschetta, Appetizers)
+ITEM(garlic_bread, Garlic Bread, Appetizers)
+
+CATEGORY_ITEM(MainCourses, Main Courses)
+ITEM(grilled_chicken, Grilled Chicken, MainCourses)
+ITEM(pasta_alfredo, Pasta Alfredo, MainCourses)
+ITEM(beef_steak, Beef Steak, MainCourses)
+
+CATEGORY_ITEM(Desserts, Desserts)
+ITEM(chocolate_cake, Chocolate Cake, Desserts)
+ITEM(ice_cream_sundae, Ice Cream Sundae, Desserts)
+ITEM(fruit_tart, Fruit Tart, Desserts)
+
+DIETARY_RESTRICTION_ITEM(Vegetarian, Vegetarian)
+DIETARY_RESTRICTION_ITEM(Vegan, Vegan)
+DIETARY_RESTRICTION_ITEM(GlutenFree, Gluten-Free)
+DIETARY_RESTRICTION_ITEM(LactoseFree, Lactose-Free)
+DIETARY_RESTRICTION_ITEM(NutFree, Nut-Free)
+
+@enduml
