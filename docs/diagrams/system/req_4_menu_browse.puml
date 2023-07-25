@@ -1,0 +1,22 @@
+@startuml req_4_menu_browse
+
+!define MAIN_COLOR Wheat
+!define TEXT_COLOR Black
+
+!define MAIN_FONT Arial
+!define TEXT_FONT Arial
+
+skinparam class {
+    BackgroundColor MAIN_COLOR
+    BorderColor Black
+    ArrowColor Black
+    FontColor TEXT_COLOR
+    FontName MAIN_FONT
+}
+
+class "Appetizer"
+class "Main Course"
+class "Dessert"
+class "Drink"
+
+@enduml

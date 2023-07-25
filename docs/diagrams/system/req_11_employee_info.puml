@@ -1,0 +1,11 @@
+@startuml employee_info
+
+!define EMPLOYEE_COLOR #99CC99
+
+!define EMPLOYEE(employee_id, name, position, contact) class employee as "Employee ID: employee_id\nName: name\nPosition: position\nContact: contact" << (F,EMPLOYEE_COLOR) >>
+
+EMPLOYEE(001, John Doe, Chef, john.doe@example.com)
+EMPLOYEE(002, Jane Smith, Waiter, jane.smith@example.com)
+EMPLOYEE(003, Mike Johnson, Bartender, mike.johnson@example.com)
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml menu_customize_item
+
+!define ITEM_COLOR #99CC99
+!define ADD_COLOR #99FF99
+!define REMOVE_COLOR #FF9999
+
+!define ITEM(item, label, description, price) class item as "Item: label\n\nDescription: description\nPrice: $price" << (F,ITEM_COLOR) >>
+!define ADD(item, ingredient) class item as "Add: ingredient" << (A,ADD_COLOR) >>
+!define REMOVE(item, ingredient) class item as "Remove: ingredient" << (A,REMOVE_COLOR) >>
+
+ITEM(pasta, Pasta, "Delicious pasta dish served with your choice of sauce.", 10.99)
+ADD(pasta, Extra Cheese)
+ADD(pasta, Grilled Chicken)
+REMOVE(pasta, Onions)
+REMOVE(pasta, Mushrooms)
+
+ITEM(pizza, Pizza, "Freshly baked pizza with a variety of toppings to choose from.", 12.99)
+ADD(pizza, Extra Pepperoni)
+ADD(pizza, Black Olives)
+REMOVE(pizza, Green Peppers)
+REMOVE(pizza, Ham)
+
+ITEM(burger, Burger, "Juicy beef burger with all your favorite toppings.", 9.99)
+ADD(burger, Bacon)
+ADD(burger, Avocado)
+REMOVE(burger, Pickles)
+REMOVE(burger, Tomato)
+
+@enduml

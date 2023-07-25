@@ -1,0 +1,7 @@
+@startuml req_8_text_size_spacing
+
+!define TEXT_COLOR #8B4513
+
+class "Text Settings" as TextSettings << (F,TEXT_COLOR) >>
+
+@enduml

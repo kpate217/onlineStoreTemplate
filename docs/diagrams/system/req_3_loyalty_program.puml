@@ -1,0 +1,6 @@
+@startuml
+class LoyaltyProgram {
+  +earnPoints(orderAmount: float) : None
+  +redeemDiscount() : float
+}
+@enduml
