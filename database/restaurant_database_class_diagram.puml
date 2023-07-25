@@ -1,0 +1,36 @@
+@startuml restaurant_database_class_diagram
+
+!define DATABASE_COLOR #FFA500
+!define TABLE_COLOR #00BFFF
+!define RESERVATION_COLOR #FF1493
+
+package "Database" <<Database>> {
+    class Restaurant << (D,DATABASE_COLOR) >>
+    class Menu << (D,DATABASE_COLOR) >>
+    class MenuItem << (D,DATABASE_COLOR) >>
+    class Customer << (D,DATABASE_COLOR) >>
+    class Order << (D,DATABASE_COLOR) >>
+    class Table << (D,DATABASE_COLOR) >>
+    class Reservation << (D,DATABASE_COLOR) >>
+}
+
+package "Tables" <<Database>> {
+    class MenuTable << (D,TABLE_COLOR) >>
+    class MenuItemTable << (D,TABLE_COLOR) >>
+    class CustomerTable << (D,TABLE_COLOR) >>
+    class OrderTable << (D,TABLE_COLOR) >>
+    class TableTable << (D,TABLE_COLOR) >>
+    class ReservationTable << (D,TABLE_COLOR) >>
+}
+
+Restaurant "1" --> "*" MenuTable
+MenuTable "1" --> "*" MenuItemTable
+Customer "1" --> "*" CustomerTable
+Customer "1" --> "*" OrderTable
+Table "1" --> "*" TableTable
+Customer "1" --> "*" ReservationTable
+Table "1" --> "*" ReservationTable
+
+ReservationTable -- Reservation
+
+@enduml
