@@ -11,13 +11,22 @@ INSERT into `users` (`username`, `password_hash`, `email`, `first_name`, `last_n
 VALUES ('bliskov', '1e4b9ae956cad1385cfa6fffd8323dd16c3fe18c54e6447e49bddef2138d042e84e1505a541c6ef19a5026e684b2559efd366145870a0a8d4d4173c0877f6cd2', 'barbara@thor.com', 'Barbara', 'Liskov');
 
 INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
-VALUES ('Apples', 'An edible cultivation of the Malus genus.', 2.00, 100, 'static/images/apple.jpeg', 'Fruit');
+VALUES ('Breadsticks', 'Freshly baked Breadsticks served with a side of Olive Oil', 6.00, 100, 'static/images/breadstick.jpg', 'Fruit');
 
 INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
-VALUES ('Bananas', 'A long curved fruit which grows in clusters and has soft pulpy flesh and yellow skin when ripe.', 1.00, 100, 'static/images/banana.jpeg', 'Fruit');
+VALUES ('Pasta', 'Delicious italian Pasta served with sauce of choice', 15.00, 100, 'static/images/pasta.jpg', 'Fruit');
 
 INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
-VALUES ('Mangos', 'The best fruit on the planet.', 4.00, 100, 'static/images/mango.jpeg', 'Fruit');
+VALUES ('Salad', 'Salad.', 13.00, 100, 'static/images/salad.jpg', 'Fruit');
+
+INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
+VALUES ('Steak', 'Savory Steak cooked to prefered tempterature and served with a side of Fries', 25.00, 100, 'static/images/steak.jpg', 'Fruit');
+
+INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
+VALUES ('Soup', 'Chicken Noodle Soup', 17.00, 100, 'static/images/soup.jpg', 'Fruit');
+
+INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
+VALUES ('Cake', 'Three Tier Chocolate Cake served with a topping on Vanilla Ice Cream', 8.00, 100, 'static/images/cake.jpg', 'Fruit');
 
 INSERT into `sales` (`transaction_id`, `username`, `item_id`, `quantity`, `sale_date`, `cost`)
 VALUES ('1', 'aturing', '1', 10, '2022-12-21 7:30:30', 5.50);
