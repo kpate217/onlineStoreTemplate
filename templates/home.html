@@ -36,5 +36,44 @@
     </div>
 </div>
 
+<!-- User Cart -->
+<div class="user-cart">
+    <h2>Your Cart</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        {% for item_id, item_info in sessions.get_session(username).cart.items() %}
+        <tr>
+            <td>{{ item_info.name }}</td>
+            <td>${{ item_info.price }}</td>
+            <td>{{ item_info.quantity }}</td>
+            <td>${{ item_info.price * item_info.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Total: ${{ sessions.get_session(username).total_cost }}</h3>
+    <form action="/checkout" method="post">
+        <input type="submit" value="Checkout">
+    </form>
+</div>
+
+<!-- In your home.html or any other relevant file -->
+<div class="row" id="home_page">
+    <!-- ... Your existing content ... -->
+    <div class="col-md-12" id="home_buttons">
+        <a href="/cart" class="btn btn-primary" id="view_cart_button">View Cart</a>
+    </div>
+</div>
+
+
+<!-- Logout Button -->
+<form action="/logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+
 
 {% endblock %}

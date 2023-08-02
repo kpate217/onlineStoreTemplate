@@ -701,6 +701,21 @@ class Database:
             "UPDATE sales SET quantity = ? WHERE id = ?", (new_quantity, sale_id))
         self.connection.commit()
 
+    def get_user_by_username(self, username):
+        """
+        Get user information by username from the 'users' table.
+
+        Args:
+        username (str): The username of the user to retrieve.
+
+        Returns:
+        dict: A dictionary containing the user information if found, else None.
+        """
+        self.cursor.execute("SELECT * FROM users WHERE username=?", (username,))
+        return self.cursor.fetchone()
+
+
+
     def set_sale_cost(self, sale_id: int, discount: float = 0, tax: float = 0.05):
         """
         Updates the cost of a sale in the database.
@@ -719,3 +734,4 @@ class Database:
         self.cursor.execute(
             "UPDATE sales SET cost = ? WHERE id = ?", (new_cost, sale_id))
         self.connection.commit()
+
