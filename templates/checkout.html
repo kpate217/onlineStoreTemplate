@@ -1,40 +1,14 @@
-<!-- checkout.html -->
-
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="row">
+
+<div class="row" id="products_page">
     <div class="col-md-12">
-        <h3>Checkout</h3>
+        <h3>Your Order</h3>
         <hr>
-        <form action="/checkout" method="post">
-            <div class="form-group">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item_id, item_info in user_session.cart.items() %}
-                        <tr>
-                            <td>{{ item_info.name }}</td>
-                            <td>${{ item_info.price }}</td>
-                            <td>
-                                <input type="number" name="{{ item_id }}" value="{{ item_info.quantity }}" min="0">
-                            </td>
-                            <td>${{ item_info.price * item_info.quantity }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <p>Total Cost: ${{ total_cost }}</p>
-            <button type="submit" class="btn btn-primary">Submit Order</button>
-        </form>
+        <div class="row">
+            <p>{{ total_cost }} </p>
+        </div>
     </div>
 </div>
 {% endblock %}
