@@ -1,3 +1,5 @@
+<!-- checkout.html -->
+
 {% extends "layout.html" %}
 
 {% block content %}
@@ -7,8 +9,13 @@
         <h3>Your Order</h3>
         <hr>
         <div class="row">
-            <p>{{ total_cost }} </p>
+            <p>{{ total_cost }}</p>
+        </div>
+        <div class="row">
+            <p>Thank you for your order! Proceed to payment.</p>
+            <!-- You can add payment processing elements here -->
         </div>
     </div>
 </div>
+
 {% endblock %}
