@@ -2,7 +2,7 @@
 
 from authentication.auth_tools import login_pipeline, update_passwords, hash_password
 from database.db import Database
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from core.session import Sessions
 
 app = Flask(__name__)
@@ -136,6 +136,49 @@ def checkout():
 
     return render_template('checkout.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
 
+@app.route('/contact', methods=['GET'])
+def contact_us():
+    # Add any necessary logic or data processing here
+    return render_template('contact_us.html')  # This renders the contact_us.html template
+
+@app.route('/submit_contact', methods=['POST'])
+def submit_contact():
+    # Retrieve the submitted form data
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+
+    # Add any necessary logic or data processing here
+
+    # Assuming you want to redirect back to the contact page after submitting
+    return redirect('/contact')
+
+@app.route('/faqs')
+def faqs():
+    # Add your code to render the faq.html page
+    return render_template('faq.html')
+
+@app.route('/submit_faq', methods=['POST'])
+def submit_faq():
+    # Retrieve the submitted form data
+    question1 = request.form['question1']
+    answer1 = request.form['answer1']
+    question2 = request.form['question2']
+    answer2 = request.form['answer2']
+    # Add more questions and answers as needed
+
+    # Add any necessary logic or data processing here
+
+    # Assuming you want to redirect back to the FAQ page after submitting
+    return redirect('/faq')
+
+@app.route('/about_us')
+def about_us():
+    return render_template('about_us.html')
+
+@app.route('/news')
+def news():
+    return render_template('news.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)

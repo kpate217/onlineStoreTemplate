@@ -1,14 +1,12 @@
 <!-- Template HTML file  -->
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Generic Cozy Restaurant</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
-
 <body>
     <div class="container">
         <div class="row">
@@ -18,9 +16,25 @@
                 <div class="content">
                     <!-- This is where the content will be rendered -->
                     {% block content %}{% endblock %}
-
                 </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row" id="info_row">
+            <div class="col-md-6">
+                <a href="/faqs" class="btn btn-primary">FAQs</a>
+            </div>
+            <div class="col-md-6">
+                <a href="/contact" class="btn btn-primary">Contact Us</a>
+            </div>
+            <div class="col-md-6">
+                <a href="/about_us" class="btn btn-primary">About Us</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/news" class="btn btn-primary">News</a>
+            </div>
+        </div>
+    </div>
 </body>
+</html>
