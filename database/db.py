@@ -719,3 +719,18 @@ class Database:
         self.cursor.execute(
             "UPDATE sales SET cost = ? WHERE id = ?", (new_cost, sale_id))
         self.connection.commit()
+
+    def set_item_image_url(self, item_id: int, new_image_url: str):
+        """
+        Updates the image_url of an item in the database.
+
+        args:
+            - item_id: The id of the item to update.
+            - new_image_url: The new image URL of the item.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE inventory SET image_url = ? WHERE id = ?", (new_image_url, item_id))
+        self.connection.commit()
