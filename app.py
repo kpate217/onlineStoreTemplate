@@ -124,17 +124,42 @@ def checkout():
     """
     order = {}
     user_session = sessions.get_session(username)
+    tax_rate = 0.07  # 7% tax rate
+    subtotal = 0
+
     for item in products:
-        print(f"item ID: {item['id']}")
-        if request.form[str(item['id'])] > '0':
-            count = request.form[str(item['id'])]
-            order[item['item_name']] = count
-            user_session.add_new_item(
-                item['id'], item['item_name'], item['price'], count)
+        item_id = str(item['id'])
+        quantity_str = request.form.get(item_id, '')
+        try:
+            quantity = int(quantity_str)
+        except ValueError:
+            quantity = 0
 
-    user_session.submit_cart()
+        if quantity > 0:
+            price = float(item['price'])
+            total_price = price * quantity
+            order[item['item_name']] = {
+                'quantity': quantity,
+                'price': price,
+                'total': total_price
+            }
+            subtotal += total_price
 
-    return render_template('checkout.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
+    tax = subtotal * tax_rate
+    grand_total = subtotal + tax
+
+    discount_code = request.form.get('discount_code', '')
+    discount_code_applied = False
+    discount_amount = 0
+
+    if discount_code.lower() == 'tenoff':
+        discount_code_applied = True
+        discount_amount = subtotal * 0.10  # 10% discount
+
+    grand_total -= discount_amount
+
+    return render_template('checkout.html', order=order, tax=tax, grand_total=grand_total, discount_code=discount_code, discount_code_applied=discount_code_applied, discount_amount=discount_amount, subtotal=subtotal)
+
 
 @app.route('/contact', methods=['GET'])
 def contact_us():
@@ -179,6 +204,75 @@ def about_us():
 @app.route('/news')
 def news():
     return render_template('news.html')
+
+@app.route('/vegan-menu')
+def vegan_menu():
+    # Get the search query parameter from the URL
+    search_query = request.args.get('search')
+
+    # Get the full inventory from the database
+    full_inventory = db.get_full_inventory()
+
+    # Filter out the vegan items
+    vegan_items = [item for item in full_inventory if item['is_vegan']]
+
+    # Filter the vegan items based on the search query
+    if search_query:
+        vegan_items = [item for item in vegan_items if search_query.lower() in item['item_name'].lower()]
+
+    return render_template('vegan_menu.html', vegan_items=vegan_items)
+
+@app.route('/')
+def index():
+    # Get the search query parameter from the URL
+    search_query = request.args.get('search')
+
+    # Get the full inventory from the database
+    full_inventory = db.get_full_inventory()
+
+    # Filter the inventory based on the search query
+    if search_query:
+        products = [item for item in full_inventory if search_query.lower() in item['item_name'].lower()]
+    else:
+        products = full_inventory
+
+    return render_template('index.html', products=products)
+
+@app.route('/search', methods=['GET'])
+def search():
+    search_query = request.args.get('search')
+
+    # Get the full inventory from the database
+    full_inventory = db.get_full_inventory()
+
+    # Filter the products based on the search query
+    search_results = [product for product in full_inventory if search_query.lower() in product['item_name'].lower()]
+
+    return render_template('index.html', products=search_results)
+
+@app.route('/process_order', methods=['POST'])
+def process_order():
+    """
+    Process the user's order and show the confirmation page.
+
+    Args:
+        - None
+
+    Returns:
+        - render_template: Renders the confirmation page.
+
+    Modifies:
+        - None
+    """
+    # Perform any necessary order processing here (e.g., payment processing, order confirmation, etc.)
+    # After processing the order, you can redirect the user to the confirmation page or render it directly.
+
+    return render_template('confirmation.html')
+
+@app.route('/checkout/success')
+def confirmation():
+    return render_template('checkout.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)

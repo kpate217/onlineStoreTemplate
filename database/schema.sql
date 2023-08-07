@@ -5,7 +5,8 @@ CREATE TABLE inventory (
     price DECIMAL(10,2) NOT NULL,
     stock INTEGER NOT NULL,
     image_url VARCHAR(255) NOT NULL,
-    category VARCHAR(255) NOT NULL
+    category VARCHAR(255) NOT NULL,
+    is_vegan BOOLEAN NOT NULL
 );
 
 CREATE TABLE users (

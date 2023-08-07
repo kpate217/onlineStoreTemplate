@@ -9,7 +9,48 @@
         <h3>Your Order</h3>
         <hr>
         <div class="row">
-            <p>{{ total_cost }}</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item_name, item_info in order.items() %}
+                    <tr>
+                        <td>{{ item_name }}</td>
+                        <td>
+                            <input type="number" name="item_{{ item_info.id }}" value="{{ item_info.quantity }}" min="0">
+                        </td>
+                        <td>${{ item_info.price }}</td>
+                        <td>${{ item_info.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <p>Subtotal: ${{ subtotal }}</p>
+        </div>
+        <div class="row">
+            <form action="/checkout" method="POST" class="form-inline mb-3">
+                <div class="input-group">
+                    <input type="text" name="discount_code" class="form-control" placeholder="Discount Code">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Apply Discount</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            {% if discount_code_applied %}
+            <p>Discount ({{ discount_code }}): -$ {{ discount_amount }}</p>
+            {% endif %}
+            <p>Tax (7%): ${{ tax }}</p>
+            <p>Grand Total: ${{ grand_total }}</p>
         </div>
         <div class="row">
             <p>Thank you for your order! Proceed to payment.</p>

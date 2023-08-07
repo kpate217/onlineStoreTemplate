@@ -734,3 +734,7 @@ class Database:
         self.cursor.execute(
             "UPDATE inventory SET image_url = ? WHERE id = ?", (new_image_url, item_id))
         self.connection.commit()
+
+    def get_full_inventory(self):
+        self.cursor.execute("SELECT * FROM inventory")
+        return self.cursor.fetchall()
