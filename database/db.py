@@ -738,3 +738,14 @@ class Database:
     def get_full_inventory(self):
         self.cursor.execute("SELECT * FROM inventory")
         return self.cursor.fetchall()
+    
+    def add_order(self, username, order_details):
+        order_date = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.cursor.execute("INSERT INTO orders (username, order_details, order_date) VALUES (?, ?, ?)",
+                            (username, order_details, order_date))
+        self.connection.commit()
+
+    def get_last_order(self, username):
+        self.cursor.execute("SELECT * FROM orders WHERE username = ? ORDER BY order_date DESC LIMIT 1",
+                            (username,))
+        return self.cursor.fetchone()

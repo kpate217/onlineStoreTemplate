@@ -26,3 +26,13 @@ This script contains the unittests for the `database` module. The tests here are
 ## core_tests.py File
 
 This script contains the unittests for the `core` module. Similar to the `auth_tests.py` file, the tests here are limited in scope. Functions from the `session.py` are tested, specfically ones that handle session management. More thorough testing for specific user sessions, multiple users, and any functions from the `utils.py` file would be a beneficial addition from students.
+
+## Testing is in testing/reviews/tests.py
+
+Tests:
+home page, 
+login page, 
+register page, 
+vegan menu page, 
+checkoutpage, 
+applying the 10% discount

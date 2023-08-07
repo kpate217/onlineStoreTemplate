@@ -2,7 +2,7 @@
 
 from authentication.auth_tools import login_pipeline, update_passwords, hash_password
 from database.db import Database
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, json
 from core.session import Sessions
 
 app = Flask(__name__)
@@ -158,6 +158,9 @@ def checkout():
 
     grand_total -= discount_amount
 
+    order_details = json.dumps(order)  # Convert the order dictionary to a JSON string
+    db.add_order(username, order_details)
+
     return render_template('checkout.html', order=order, tax=tax, grand_total=grand_total, discount_code=discount_code, discount_code_applied=discount_code_applied, discount_amount=discount_amount, subtotal=subtotal)
 
 
@@ -273,6 +276,23 @@ def process_order():
 def confirmation():
     return render_template('checkout.html')
 
+def reorder_last_order():
+    # Get the customer's last order from the orders table
+    last_order = db.get_last_order(username)
+    
+    if last_order:
+        order_details = json.loads(last_order['order_details'])  # Convert the JSON string back to a dictionary
+        # Pass the order details to the checkout template
+        return render_template('checkout.html', order=order_details, sessions=sessions, total_cost=calculate_total_cost(order_details))
+    else:
+        # If no last order found, handle the case (e.g., redirect to the main menu)
+        return redirect('/')
+    
+def calculate_total_cost(order_details):
+    total_cost = 0
+    for item_name, item_info in order_details.items():
+        total_cost += item_info['price'] * item_info['quantity']
+    return total_cost
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)

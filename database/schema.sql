@@ -29,3 +29,9 @@ CREATE TABLE sales (
     FOREIGN KEY (item_id) REFERENCES inventory(id)
 );
 
+CREATE TABLE orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    order_details TEXT NOT NULL,
+    order_date TEXT NOT NULL
+);
