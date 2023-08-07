@@ -749,3 +749,7 @@ class Database:
         self.cursor.execute("SELECT * FROM orders WHERE username = ? ORDER BY order_date DESC LIMIT 1",
                             (username,))
         return self.cursor.fetchone()
+    
+    def get_breadstick(self):
+        self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Breadstick'")
+        return self.cursor.fetchall()

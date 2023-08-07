@@ -86,3 +86,31 @@ def test_check_connection_threaded(db: Database = None) -> tuple:
         return False, error
     else:
         return True, "Connection is not single threaded."
+    
+
+#And here is where Michelle starts to scheme and plan
+'''
+- Make test to check for if bread is an item in the database
+'''
+
+def test_get_breadstick_exists(db: Database = None) -> tuple:
+    """
+    Tests that the inventory is not empty.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string, 
+          where the boolean is True if the test passed and False if it failed, 
+          and the string is the error report.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    breadstick_existance = db.get_breadstick()
+
+    if len(breadstick_existance) == 0:
+        error = f"Error in test_get_breadstick: there is no stick of bread, only sadness"
+        return False, error
+    else:
+        return True, "Breadstick."
