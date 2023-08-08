@@ -89,28 +89,59 @@ def test_check_connection_threaded(db: Database = None) -> tuple:
     
 
 #And here is where Michelle starts to scheme and plan
-'''
-- Make test to check for if bread is an item in the database
-'''
 
 def test_get_breadstick_exists(db: Database = None) -> tuple:
     """
-    Tests that the inventory is not empty.
-
-    args:
-        - db: an sqlite3 database object (optional)
-
-    returns:
-        - error_report: a tuple containing a boolean and a string, 
-          where the boolean is True if the test passed and False if it failed, 
-          and the string is the error report.
+    Tests that the inventory has breadsticks.
     """
 
     db = Database("database/store_records.db") if db is None else db
     breadstick_existance = db.get_breadstick()
 
     if len(breadstick_existance) == 0:
-        error = f"Error in test_get_breadstick: there is no stick of bread, only sadness"
+        error = f"Error in test_get_breadstick_exists: there is no stick of bread, only sadness"
         return False, error
     else:
         return True, "Breadstick."
+    
+def test_get_soup_exists(db: Database = None) -> tuple:
+    """
+    Tests that the inventory has soup.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    breadstick_existance = db.get_soup()
+
+    if len(breadstick_existance) == 0:
+        error = f"Error in test_get_soup_exists: there is no soup, only sadness"
+        return False, error
+    else:
+        return True, "Soup."
+
+def test_get_mango_price(db: Database = None) -> tuple:
+    """
+    Tests that the inventory mango price is correct.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    breadstick_existance = db.get_mango_price()
+
+    if len(breadstick_existance) == 0:
+        error = f"Error in test_get_mango_price: the price is incorrect"
+        return False, error
+    else:
+        return True, "Correct price for Mango."
+    
+def test_wrong_mango_price(db: Database = None) -> tuple:
+    """
+    Tests for wrong mango price
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    breadstick_existance = db.get_wrong_mango_price()
+
+    if len(breadstick_existance) == 0:
+        return True, "Correct price for Mango."
+    else:
+        error = f"Error in test_get_mango_price: the price is incorrect"
+        return False, error

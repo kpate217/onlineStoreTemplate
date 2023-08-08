@@ -753,3 +753,15 @@ class Database:
     def get_breadstick(self):
         self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Breadstick'")
         return self.cursor.fetchall()
+    
+    def get_soup(self):
+        self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Soup'")
+        return self.cursor.fetchall()
+    
+    def get_mango_price(self):
+        self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Mangos' AND price = 4")
+        return self.cursor.fetchall()
+    
+    def get_wrong_mango_price(self):
+        self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Mangos' AND price = 5")
+        return self.cursor.fetchall()
