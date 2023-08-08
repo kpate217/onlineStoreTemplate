@@ -1,9 +1,8 @@
-
 #index_buttons {
     padding-top: 15px;
     margin: 0 auto;
     width: 250px;
-    height: 75px;
+    height: 125px;
 }
 
 #login_button {
@@ -20,7 +19,6 @@
     padding-top: 15px;
     margin: 0 auto;
     width: 320px;
-    max-height: 100px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
 }
@@ -123,10 +121,6 @@
     text-align: center;
 }
 
-body{
-    background-color: rgb(224, 213, 180);
-}
-
 .btn-primary {
     background-color: #4963f4;
     border-color: #ccc;
@@ -134,4 +128,13 @@ body{
     min-width: 100px;
     font-weight: bold;
     text-align: center;
+}
+
+body{
+    background-color: rgb(224, 213, 180);
+}
+
+#index_buttons {
+    max-height: 55px;
+    padding: 5px;
 }
