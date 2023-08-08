@@ -765,3 +765,11 @@ class Database:
     def get_wrong_mango_price(self):
         self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Mangos' AND price = 5")
         return self.cursor.fetchall()
+    
+    def get_steak(self):
+        self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Steak'")
+        return self.cursor.fetchall()
+
+    def get_pasta(self):
+        self.cursor.execute("SELECT item_name FROM inventory WHERE Inventory.item_name = 'Pasta'")
+        return self.cursor.fetchall()

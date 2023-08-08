@@ -145,3 +145,31 @@ def test_wrong_mango_price(db: Database = None) -> tuple:
     else:
         error = f"Error in test_get_mango_price: the price is incorrect"
         return False, error
+    
+def test_get_steak_exists(db: Database = None) -> tuple:
+    """
+    Tests that the inventory has steak.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    steak_existance = db.get_steak()
+
+    if len(steak_existance) == 0:
+        error = f"Error in test_get_steak_exists: We out of steak"
+        return False, error
+    else:
+        return True, "Steak."
+    
+def test_get_pasta_exists(db: Database = None) -> tuple:
+    """
+    Tests that the inventory has pasta.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    pasta_existance = db.get_pasta()
+
+    if len(pasta_existance) == 0:
+        error = f"Error in test_get_pasta_exists: We out of pasta"
+        return False, error
+    else:
+        return True, "pasta."
